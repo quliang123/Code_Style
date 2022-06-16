@@ -26,8 +26,7 @@ public class QuestionRepositoryTest {
         Question save = questionRepository.save(question);
         System.out.println("save = " + save);
 
-        //TODO: check
-//        Assertions.assertNull(save.getId());
+        //Assertions.assertNull(save.getId());
         Assertions.assertNotNull(save.getId());
         Assertions.assertEquals(save.getId(),question.getId());
     }
