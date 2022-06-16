@@ -24,7 +24,6 @@ public class QuestionRepositoryTest {
     void repositiry_should_successful_question() {
         Question question = new Question("UID_0001", "A test title", "A test detail");
         Question save = questionRepository.save(question);
-        System.out.println("save = " + save);
 
         //Assertions.assertNull(save.getId());
         Assertions.assertNotNull(save.getId());
