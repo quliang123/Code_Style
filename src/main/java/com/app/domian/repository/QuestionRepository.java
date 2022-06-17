@@ -1,6 +1,6 @@
 package com.app.domian.repository;
 
-import com.app.domian.model.Question;
+import com.app.domian.model.entity.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

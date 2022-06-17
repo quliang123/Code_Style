@@ -2,10 +2,9 @@ package com.app.domian.application;
 
 import com.app.domian.application.command.CreateQuestionCommand;
 import com.app.domian.application.result.CreateQuestionResult;
-import com.app.domian.model.Question;
+import com.app.domian.model.entity.Question;
 import com.app.domian.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @program: Code_Style
