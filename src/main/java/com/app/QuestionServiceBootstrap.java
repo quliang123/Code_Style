@@ -13,6 +13,5 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class QuestionServiceBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(QuestionServiceBootstrap.class, args);
-        System.out.println("Hello world!");
     }
 }
