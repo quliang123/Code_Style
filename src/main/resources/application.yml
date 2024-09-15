@@ -5,3 +5,10 @@ spring:
     password: root
   jpa:
     open-in-view: false
+    show-sql: true
+    database: mysql
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true

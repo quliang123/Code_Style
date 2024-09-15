@@ -1,2 +1,37 @@
 rootProject.name = 'Code_Style'
+long beginOfSetting = System.currentTimeMillis()
 
+gradle.projectsLoaded {
+    println 'init time ' + (System.currentTimeMillis() - beginOfSetting) + 'ms'
+}
+
+def beginOfConfig
+def configHasBegin = false
+def beginOfProjectConfig = new HashMap()
+gradle.beforeProject { project ->
+    if (!configHasBegin) {
+        configHasBegin = true
+        beginOfConfig = System.currentTimeMillis()
+    }
+    beginOfProjectConfig.put(project, System.currentTimeMillis())
+}
+gradle.afterProject { project ->
+    def begin = beginOfProjectConfig.get(project)
+    println 'config ' + project + 'time ' + (System.currentTimeMillis() - begin) + 'ms'
+}
+def beginOfProjectExcute
+gradle.taskGraph.whenReady {
+    println 'config totalTime ' + (System.currentTimeMillis() - beginOfConfig) + 'ms'
+    beginOfProjectExcute = System.currentTimeMillis()
+}
+gradle.taskGraph.beforeTask { task ->
+    task.doFirst {
+        task.ext.beginOfTask = System.currentTimeMillis()
+    }
+    task.doLast {
+        println 'execu ' + task + 'time ' + (System.currentTimeMillis() - task.beginOfTask) + 'ms'
+    }
+}
+gradle.buildFinished {
+    println 'execu time' + (System.currentTimeMillis() - beginOfProjectExcute) + 'ms'
+}
